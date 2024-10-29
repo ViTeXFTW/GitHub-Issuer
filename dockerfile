@@ -24,7 +24,6 @@ COPY --from=builder /app/venv venv
 
 # Copy the bot.py file and any other necessary files
 COPY bot.py bot.py
-COPY .env .env
 
 # Set environment variables
 ENV VIRTUAL_ENV=/app/venv
