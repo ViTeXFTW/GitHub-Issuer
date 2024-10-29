@@ -3,7 +3,24 @@ from discord import app_commands
 from discord.ext import commands
 import requests
 import os
+from dotenv import load_dotenv
 
+from flask import Flask
+from threading import Thread
+
+load_dotenv()
+
+app = Flask('FrontEnd')
+
+@app.route('/')
+def home():
+    return "Hello. I am alive!"
+
+def run():
+  app.run(host='0.0.0.0',port=8000)
+
+server_thread = Thread(target=run)
+server_thread.start()
 
 # Retrieve sensitive information from environment variables
 BOT_TOKEN = os.getenv("BOT_TOKEN")
